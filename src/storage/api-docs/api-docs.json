@@ -1,0 +1,941 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sistem Beasiswa API Dokumentasi",
+        "description": "Dokumentasi API untuk Sistem Beasiswa Universitas Esa Unggul",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/api/beasiswa": {
+            "get": {
+                "tags": [
+                    "Beasiswa"
+                ],
+                "summary": "Menampilkan semua program beasiswa",
+                "operationId": "7669e0f0447ba7dd8aed4f4b7d930c5f",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil data beasiswa"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Beasiswa"
+                ],
+                "summary": "Menyimpan program beasiswa baru",
+                "operationId": "3ced3b084183102d2779b54109446400",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_beasiswa",
+                                    "periode_buka",
+                                    "periode_tutup"
+                                ],
+                                "properties": {
+                                    "nama_beasiswa": {
+                                        "type": "string",
+                                        "example": "Beasiswa Unggulan"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Beasiswa untuk mahasiswa berprestasi"
+                                    },
+                                    "periode_buka": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-08-01"
+                                    },
+                                    "periode_tutup": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-09-01"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "aktif"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Beasiswa berhasil dibuat"
+                    }
+                }
+            }
+        },
+        "/api/beasiswa/{id}": {
+            "get": {
+                "tags": [
+                    "Beasiswa"
+                ],
+                "summary": "Menampilkan detail program beasiswa",
+                "operationId": "c13a670c7afc49b90e27b1894c55208e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil detail beasiswa"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Beasiswa"
+                ],
+                "summary": "Memperbarui program beasiswa",
+                "operationId": "3f10cdaae91a6b01522d6ba042fabe4b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama_beasiswa": {
+                                        "type": "string",
+                                        "example": "Beasiswa Update"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string",
+                                        "example": "Deskripsi terbaru"
+                                    },
+                                    "periode_buka": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-08-10"
+                                    },
+                                    "periode_tutup": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-09-10"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "nonaktif"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Beasiswa berhasil diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Beasiswa"
+                ],
+                "summary": "Menghapus program beasiswa",
+                "operationId": "6890f7db211a2787b1e9985baabadde8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Beasiswa berhasil dihapus"
+                    }
+                }
+            }
+        },
+        "/api/data-peserta": {
+            "get": {
+                "tags": [
+                    "Data Peserta"
+                ],
+                "summary": "Menampilkan semua data peserta",
+                "operationId": "8b1ee8ec34fb3a5c2f533f89d15915af",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil data peserta"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Data Peserta"
+                ],
+                "summary": "Menyimpan data peserta baru",
+                "operationId": "54ccb6491a97dd3bcf13e9898919f1be",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "nim",
+                                    "jurusan",
+                                    "angkatan"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "nim": {
+                                        "type": "string",
+                                        "example": "20230801219"
+                                    },
+                                    "jurusan": {
+                                        "type": "string",
+                                        "example": "Teknik Informatika"
+                                    },
+                                    "angkatan": {
+                                        "type": "integer",
+                                        "example": 2023
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Data peserta berhasil dibuat"
+                    }
+                }
+            }
+        },
+        "/api/data-peserta/{id}": {
+            "get": {
+                "tags": [
+                    "Data Peserta"
+                ],
+                "summary": "Menampilkan detail data peserta",
+                "operationId": "c56e240c33a4379e3e72f0498c02c3c5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil detail data peserta"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Data Peserta"
+                ],
+                "summary": "Memperbarui data peserta",
+                "operationId": "dd897e797780a1a32afe2b8fcfa509ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nim": {
+                                        "type": "string",
+                                        "example": "20230801219"
+                                    },
+                                    "jurusan": {
+                                        "type": "string",
+                                        "example": "Sistem Informasi"
+                                    },
+                                    "angkatan": {
+                                        "type": "integer",
+                                        "example": 2022
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data peserta berhasil diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Data Peserta"
+                ],
+                "summary": "Menghapus data peserta",
+                "operationId": "578e2e70e030230f4f08bfb57b275065",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Data peserta berhasil dihapus"
+                    }
+                }
+            }
+        },
+        "/api/dokumen": {
+            "get": {
+                "tags": [
+                    "Dokumen"
+                ],
+                "summary": "Menampilkan semua dokumen",
+                "operationId": "d46181f21fafa4088995a53e6e2ee0f6",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil daftar dokumen"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Dokumen"
+                ],
+                "summary": "Upload dokumen baru",
+                "operationId": "6e6c0838e6ba7aed119dbc6ae5068c9e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "pendaftaran_id"
+                                ],
+                                "properties": {
+                                    "pendaftaran_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "ktm": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "krs": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "khs": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Dokumen berhasil disimpan"
+                    }
+                }
+            }
+        },
+        "/api/dokumen/{id}": {
+            "get": {
+                "tags": [
+                    "Dokumen"
+                ],
+                "summary": "Menampilkan detail dokumen",
+                "operationId": "908a8ac65361a3712f180c2975189c33",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil detail dokumen"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Dokumen"
+                ],
+                "summary": "Memperbarui dokumen (upload ulang)",
+                "operationId": "d2cc804a4be97caceb124e0f02320936",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "ktm": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "krs": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "khs": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Dokumen berhasil diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Dokumen"
+                ],
+                "summary": "Menghapus dokumen",
+                "operationId": "ef516848303f13421dc5e3bfed775da2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Dokumen berhasil dihapus"
+                    }
+                }
+            }
+        },
+        "/api/pendaftaran": {
+            "get": {
+                "tags": [
+                    "Pendaftaran"
+                ],
+                "summary": "Menampilkan semua data pendaftaran beasiswa",
+                "operationId": "79b44847ba89b758b7d4ccf1826628bd",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil data pendaftaran"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Pendaftaran"
+                ],
+                "summary": "Mendaftarkan pengguna ke program beasiswa",
+                "operationId": "c9c1ac52f5579de30fc305f7a0908421",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "beasiswa_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "beasiswa_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "status_verifikasi": {
+                                        "type": "string",
+                                        "example": "diproses"
+                                    },
+                                    "catatan_verifikasi": {
+                                        "type": "string",
+                                        "example": "Dokumen belum lengkap"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pendaftaran berhasil disimpan"
+                    }
+                }
+            }
+        },
+        "/api/pendaftaran/{id}": {
+            "get": {
+                "tags": [
+                    "Pendaftaran"
+                ],
+                "summary": "Menampilkan detail pendaftaran berdasarkan ID",
+                "operationId": "9c8d0d5f4bff4f709151654b74f13bce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail pendaftaran ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Pendaftaran"
+                ],
+                "summary": "Memperbarui status dan catatan verifikasi pendaftaran",
+                "operationId": "6fec343d9f45ded326294e194a8aa3ad",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status_verifikasi": {
+                                        "type": "string",
+                                        "example": "disetujui"
+                                    },
+                                    "catatan_verifikasi": {
+                                        "type": "string",
+                                        "example": "Dokumen lengkap"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data pendaftaran berhasil diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pendaftaran"
+                ],
+                "summary": "Menghapus data pendaftaran",
+                "operationId": "e5aa2fb7d2f3d1a4cadcdfc1d65f981c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Pendaftaran berhasil dihapus"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Menampilkan daftar semua pengguna",
+                "operationId": "566aed8efb436ca506e0ef51a032ecd9",
+                "responses": {
+                    "200": {
+                        "description": "Daftar pengguna berhasil diambil"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Beasiswa": {
+                "title": "Beasiswa",
+                "description": "Beasiswa model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID Beasiswa",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "nama_beasiswa": {
+                        "title": "Nama Beasiswa",
+                        "description": "Nama program beasiswa",
+                        "type": "string",
+                        "example": "Beasiswa Prestasi Akademik 2025"
+                    },
+                    "deskripsi": {
+                        "title": "Deskripsi",
+                        "description": "Deskripsi lengkap beasiswa",
+                        "type": "string",
+                        "example": "Diberikan kepada mahasiswa aktif dengan Indeks Prestasi Kumulatif (IPK) di atas 3.50."
+                    },
+                    "periode_buka": {
+                        "title": "Periode Buka",
+                        "description": "Tanggal mulai pendaftaran beasiswa",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-07-01"
+                    },
+                    "periode_tutup": {
+                        "title": "Periode Tutup",
+                        "description": "Tanggal berakhir pendaftaran beasiswa",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-08-31"
+                    },
+                    "status": {
+                        "title": "Status Beasiswa",
+                        "description": "Status ketersediaan beasiswa (misal: aktif, nonaktif, dibuka, ditutup)",
+                        "type": "string",
+                        "example": "aktif",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "title": "Waktu Dibuat",
+                        "description": "Timestamp pembuatan data",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    },
+                    "updated_at": {
+                        "title": "Waktu Diperbarui",
+                        "description": "Timestamp terakhir data diperbarui",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Beasiswa"
+                }
+            },
+            "Dokumen": {
+                "title": "Dokumen",
+                "description": "Model Dokumen yang diunggah",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID Dokumen",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "pendaftaran_id": {
+                        "title": "Pendaftaran ID",
+                        "description": "ID Pendaftaran yang terkait dengan dokumen ini",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "ktm": {
+                        "title": "KTM Path",
+                        "description": "Jalur penyimpanan file KTM",
+                        "type": "string",
+                        "example": "dokumen/ktm_user1.pdf",
+                        "nullable": true
+                    },
+                    "krs": {
+                        "title": "KRS Path",
+                        "description": "Jalur penyimpanan file KRS",
+                        "type": "string",
+                        "example": "dokumen/krs_user1.pdf",
+                        "nullable": true
+                    },
+                    "khs": {
+                        "title": "KHS Path",
+                        "description": "Jalur penyimpanan file KHS",
+                        "type": "string",
+                        "example": "dokumen/khs_user1.pdf",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "title": "Waktu Dibuat",
+                        "description": "Timestamp pembuatan data",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    },
+                    "updated_at": {
+                        "title": "Waktu Diperbarui",
+                        "description": "Timestamp terakhir data diperbarui",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Dokumen"
+                }
+            },
+            "Pendaftaran": {
+                "title": "Pendaftaran",
+                "description": "Model Pendaftaran Beasiswa",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID Pendaftaran",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "title": "User ID",
+                        "description": "ID Pengguna (Peserta) yang mengajukan",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "beasiswa_id": {
+                        "title": "Beasiswa ID",
+                        "description": "ID Beasiswa yang dilamar",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "tanggal_daftar": {
+                        "title": "Tanggal Daftar",
+                        "description": "Tanggal pendaftaran diajukan",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-07-22"
+                    },
+                    "status_verifikasi": {
+                        "title": "Status Verifikasi",
+                        "description": "Status verifikasi pendaftaran beasiswa",
+                        "type": "string",
+                        "enum": [
+                            "diproses",
+                            "disetujui",
+                            "ditolak"
+                        ],
+                        "example": "diproses"
+                    },
+                    "catatan_verifikasi": {
+                        "title": "Catatan Verifikasi",
+                        "description": "Catatan dari Staf Akademik (opsional) saat verifikasi",
+                        "type": "string",
+                        "example": "Dokumen KHS perlu diperbarui.",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "title": "Waktu Dibuat",
+                        "description": "Timestamp pembuatan data",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    },
+                    "updated_at": {
+                        "title": "Waktu Diperbarui",
+                        "description": "Timestamp terakhir data diperbarui",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Pendaftaran"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID Pengguna",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "avatar_url": {
+                        "title": "Avatar URL",
+                        "description": "URL Avatar pengguna",
+                        "type": "string",
+                        "example": "http://example.com/avatar/1.jpg",
+                        "nullable": true
+                    },
+                    "name": {
+                        "title": "Nama",
+                        "description": "Nama lengkap pengguna",
+                        "type": "string",
+                        "example": "Ilham Sheva"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "description": "Alamat email pengguna",
+                        "type": "string",
+                        "format": "email",
+                        "example": "ilham.sheva@esaunggul.ac.id"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "description": "Kata sandi pengguna (hashed)",
+                        "type": "string",
+                        "format": "password",
+                        "example": "$2y$10$eImiTMZG4TQ2Lkz5j1a5uO"
+                    },
+                    "email_verified_at": {
+                        "title": "Email Verified At",
+                        "description": "Timestamp verifikasi email",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "title": "Waktu Dibuat",
+                        "description": "Timestamp pembuatan data",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    },
+                    "updated_at": {
+                        "title": "Waktu Diperbarui",
+                        "description": "Timestamp terakhir data diperbarui",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-22T04:00:00Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Beasiswa",
+            "description": "Beasiswa"
+        },
+        {
+            "name": "Data Peserta",
+            "description": "Data Peserta"
+        },
+        {
+            "name": "Dokumen",
+            "description": "Dokumen"
+        },
+        {
+            "name": "Pendaftaran",
+            "description": "Pendaftaran"
+        },
+        {
+            "name": "User",
+            "description": "User"
+        }
+    ]
+}

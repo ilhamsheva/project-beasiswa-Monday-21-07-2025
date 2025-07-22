@@ -141,6 +141,9 @@ RUN echo '#!/bin/bash\n/usr/local/bin/php /var/www/html/artisan config:clear\n/v
 RUN chmod +x /usr/bin/t
 # docker-compose exec php-fpm d --> run the Laravel Dusk browser tests for the project
 RUN echo '#!/bin/bash\n/usr/local/bin/php /var/www/html/artisan config:clear\n/bin/bash\n/usr/local/bin/php /var/www/html/artisan dusk -d memory_limit=2G --stop-on-error --stop-on-failure --testdox-text=tests/report-dusk.txt "$@"' > /usr/bin/d
+RUN echo "max_file_uploads=100" >> /usr/local/etc/php/conf.d/docker-php-ext-max_file_uploads.ini
+RUN echo "post_max_size=128M" >> /usr/local/etc/php/conf.d/docker-php-ext-post_max_size.ini
+RUN echo "upload_max_filesize=128M" >> /usr/local/etc/php/conf.d/docker-php-ext-upload_max_filesize.ini
 RUN chmod +x /usr/bin/d
 
 RUN rm -r /var/lib/apt/lists/*
